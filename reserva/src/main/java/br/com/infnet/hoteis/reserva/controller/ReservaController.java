@@ -40,7 +40,7 @@ public class ReservaController {
         log.info("Find reserva by id: {}", id);
         Optional<Reserva> byId = reservaService.findById(id);
         if (byId.isPresent()) {
-            return ResponseEntity.ok(byId);
+            return ResponseEntity.ok(byId.get());
         }else{
             return ResponseEntity.notFound().build();
         }
@@ -49,15 +49,18 @@ public class ReservaController {
     @PostMapping
     public ResponseEntity<?> check(@RequestBody ReservaDto dto) throws Exception {
         log.info("Printando Reserva Feita");
-        /*List<Hotel> quartosDisponiveis = disponibilidadeService.check(dto);
+        List<Hotel> quartosDisponiveis = disponibilidadeService.check(dto);
+        if (Objects.isNull(quartosDisponiveis)){
+            return ResponseEntity.badRequest().body("Deu ruim pai");
+        }
         if (quartosDisponiveis.isEmpty()) {
             return ResponseEntity.ok("Não há quartos disponíveis");
         }else{
             log.info("NAME: "+ cache.appName);
             log.info("Iniciando confirmação reserva");
-            confirm(dto, quartosDisponiveis.get(1));*/
+            confirm(dto, quartosDisponiveis.get(1));
             return ResponseEntity.ok("Sua reserva foi realizada");
-        //}
+        }
     }
 
     private void confirm(ReservaDto dto, Hotel hotel) throws Exception {
@@ -72,6 +75,6 @@ public class ReservaController {
         });
         Reserva reserva = new Reserva(dto, hotel, usuario);
         disponibilidadeService.confirm(reserva);
-        notificacaoService.notificar(reserva);
+        //notificacaoService.notificar(reserva);
     }
 }

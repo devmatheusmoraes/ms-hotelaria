@@ -1,6 +1,6 @@
-package br.com.infnet.hoteis.reserva.model;
+package br.com.infnet.hoteis.disponibilidade.model;
 
-import br.com.infnet.hoteis.reserva.dto.ReservaDto;
+import br.com.infnet.hoteis.disponibilidade.dto.ReservaDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -37,18 +37,14 @@ public class Reserva {
     @JoinColumn(name = "hotel_id")
     private Hotel hotel;
 
-    @ManyToOne
-    @JoinColumn(name = "usuario_id")
-    private Usuario usuario;
+    private Long usuarioId;
 
-    public Reserva(ReservaDto dto, Hotel hotel, Usuario usuario){
+    public Reserva(ReservaDto dto){
         this.dataInicio = dto.dataInicio();
         this.dataFim = dto.dataFim();
         this.numeroAdultos = dto.numeroAdultos();
         this.numeroCriancas = dto.numeroCriancas();
         this.numeroComodos = dto.numeroComodos();
-        this.hotel = hotel;
-        this.usuario = usuario;
     }
 
 }

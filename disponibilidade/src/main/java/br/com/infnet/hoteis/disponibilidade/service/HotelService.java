@@ -1,7 +1,8 @@
-package br.com.infnet.hoteis.reserva.service;
+package br.com.infnet.hoteis.disponibilidade.service;
 
-import br.com.infnet.hoteis.reserva.model.Hotel;
-import br.com.infnet.hoteis.reserva.repository.HotelRepository;
+import br.com.infnet.hoteis.disponibilidade.dto.ReservaDto;
+import br.com.infnet.hoteis.disponibilidade.model.Hotel;
+import br.com.infnet.hoteis.disponibilidade.repository.HotelRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,5 +18,9 @@ public class HotelService {
     }
     public List<Hotel> findAll(){
         return hotelRepository.findAll();
+    }
+
+    public List<Hotel> findHotelsByDto(ReservaDto dto){
+        return hotelRepository.findHotels(dto);
     }
 }

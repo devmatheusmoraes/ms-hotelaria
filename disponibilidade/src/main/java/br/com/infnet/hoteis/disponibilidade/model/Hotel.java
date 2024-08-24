@@ -1,10 +1,11 @@
-package br.com.infnet.hoteis.reserva.model;
+package br.com.infnet.hoteis.disponibilidade.model;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.Set;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

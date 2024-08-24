@@ -10,6 +10,12 @@ spring:
             - StripPrefix=1
           predicates:
             - Path=/reserva/**
+        - id: disponibilidade
+          uri: lb://DISPONIBILIDADE-SERVICE
+          filters:
+            - StripPrefix=1
+          predicates:
+            - Path=/disponibilidade/**
 
 eureka:
   client:

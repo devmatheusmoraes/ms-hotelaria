@@ -1,4 +1,4 @@
-package br.com.infnet.hoteis.reserva.dto;
+package br.com.infnet.hoteis.disponibilidade.dto;
 
 import java.time.LocalDate;
 
