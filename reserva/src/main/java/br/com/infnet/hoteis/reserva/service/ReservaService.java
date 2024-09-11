@@ -18,4 +18,8 @@ public class ReservaService {
     public List<Reserva> findAll(){
         return reservaRepository.findAll();
     }
+
+    public void save(Reserva reserva){
+        reservaRepository.save(reserva);
+    }
 }

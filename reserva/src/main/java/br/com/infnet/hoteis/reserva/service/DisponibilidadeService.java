@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -19,5 +20,9 @@ public class DisponibilidadeService {
 
     public void confirm(Reserva reserva){
         client.confirm(reserva);
+    }
+
+    public Optional<Hotel> validar(Long idHotel){
+        return client.validar(idHotel);
     }
 }

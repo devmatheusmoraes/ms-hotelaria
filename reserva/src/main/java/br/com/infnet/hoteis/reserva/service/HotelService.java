@@ -18,4 +18,8 @@ public class HotelService {
     public List<Hotel> findAll(){
         return hotelRepository.findAll();
     }
+
+    public void save(Hotel hotel){
+        hotelRepository.save(hotel);
+    }
 }

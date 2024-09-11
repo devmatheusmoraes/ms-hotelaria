@@ -1,5 +1,6 @@
 package br.com.infnet.hoteis.disponibilidade.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -29,6 +30,7 @@ public class Hotel {
 
     private Integer numeroComodosApartamento;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "hotel")
     private Set<Reserva> reservas;
 

@@ -1,6 +1,7 @@
 package br.com.infnet.hoteis.disponibilidade.model;
 
 import br.com.infnet.hoteis.disponibilidade.dto.ReservaDto;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -33,6 +34,7 @@ public class Reserva {
 
     private Integer numeroComodos;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "hotel_id")
     private Hotel hotel;

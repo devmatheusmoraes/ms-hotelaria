@@ -18,4 +18,8 @@ public class UsuarioService {
     public List<Usuario> findAll() {
         return usuarioRespository.findAll();
     }
+
+    public void save(Usuario usuario){
+        usuarioRespository.save(usuario);
+    }
 }
