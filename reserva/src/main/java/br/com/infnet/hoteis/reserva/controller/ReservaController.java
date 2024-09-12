@@ -89,7 +89,7 @@ public class ReservaController {
             reserva.setValor(calcularValorReserva(reserva));
             reservaService.save(reserva);
             disponibilidadeService.confirm(reserva);
-            //notificacaoService.notificar(reserva);
+            notificacaoService.notificar(reserva);
             return ResponseEntity.ok().build();
         } catch (ResponseStatusException e) {
             log.error("Erro ao confirmar reserva: ", e);
