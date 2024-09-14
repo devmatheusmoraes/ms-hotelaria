@@ -86,11 +86,11 @@ public class ReservaController {
             usuarioService.save(usuario);
             hotelService.save(hotel);
             Reserva reserva = new Reserva(dto.reservaDto(), hotel, usuario);
-            reserva.setValor(calcularValorReserva(reserva));
+            reserva.setValor(calcularValorReserva(reserva.getHotel()));
             reservaService.save(reserva);
             disponibilidadeService.confirm(reserva);
             notificacaoService.notificar(reserva);
-            return ResponseEntity.ok().build();
+            return ResponseEntity.ok().body("Reserva criada com sucesso!");
         } catch (ResponseStatusException e) {
             log.error("Erro ao confirmar reserva: ", e);
             return ResponseEntity.status(e.getStatusCode()).body(e.getReason());

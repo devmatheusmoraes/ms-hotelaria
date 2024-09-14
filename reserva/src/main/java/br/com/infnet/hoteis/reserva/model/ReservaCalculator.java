@@ -8,18 +8,18 @@ public class ReservaCalculator {
     private static final BigDecimal PRECO_ADICIONAL_CRIANCA = new BigDecimal("50.00");
     private static final BigDecimal AUMENTO_CRIAANCA = new BigDecimal("0.20");
 
-    public static BigDecimal calcularValorReserva(Reserva reserva) {
+    public static BigDecimal calcularValorReserva(Hotel hotel) {
 
-        BigDecimal precoBase = PRECO_BASE_ADULTO.multiply(BigDecimal.valueOf(reserva.getNumeroAdultos()))
-                .add(PRECO_ADICIONAL_CRIANCA.multiply(BigDecimal.valueOf(reserva.getNumeroCriancas())));
+        BigDecimal precoBase = PRECO_BASE_ADULTO.multiply(BigDecimal.valueOf(hotel.getNumeroAdultosApartamento()))
+                .add(PRECO_ADICIONAL_CRIANCA.multiply(BigDecimal.valueOf(hotel.getNumeroCriancasApartamento())));
 
 
-        if (reserva.getNumeroCriancas() > 0) {
+        if (hotel.getNumeroCriancasApartamento() > 0) {
             BigDecimal acrescimo = precoBase.multiply(AUMENTO_CRIAANCA);
             precoBase = precoBase.add(acrescimo);
         }
 
-        return precoBase.multiply(reserva.getHotel().getPercentHotel())
+        return precoBase.multiply(hotel.getPercentHotel())
                 .setScale(2, RoundingMode.HALF_UP);
     }
 

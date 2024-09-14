@@ -30,6 +30,7 @@ public class EmailService {
                         "Código Reserva: %d\nPreço: %d\n\nAtt;",
                 reserva.usuario().nomeCompleto(), reserva.hotel().nome(), reserva.id().intValue(),reserva.valor().intValue()));
         javaMailSender.send(message);
+        log.info("E-mail enviado com sucesso!");
     }
 }
 
